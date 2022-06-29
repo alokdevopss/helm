@@ -1,7 +1,7 @@
 FROM node:10-alpine
 WORKDIR /app
 COPY package.json .
-RUN apk add --update git
+# RUN apk add --update git
 RUN npm install
 COPY . .
 EXPOSE 3000
