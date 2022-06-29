@@ -5,9 +5,17 @@
 # EXPOSE 3000
 # CMD ["node", "app.js"]
 
-FROM ubuntu:18.10
-LABEL maintainer="egidio.docile@linuxconfig.org"
+# Pull the minimal Ubuntu image
+FROM ubuntu
 
-RUN apt-get update && apt-get -y install apache2
-EXPOSE 80
+# Install Nginx
+RUN apt-get -y update && apt-get -y install nginx
 
+# Copy the Nginx config
+COPY default /etc/nginx/sites-available/default
+
+# Expose the port for access
+EXPOSE 80/tcp
+
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
