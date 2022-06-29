@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node
 WORKDIR /app
 COPY package.json .
 # RUN apk add --update git
