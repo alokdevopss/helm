@@ -1,7 +1,9 @@
-FROM node
-WORKDIR /usr/src/app
-COPY package*.json app.js ./
+FROM node:10-alpine
+WORKDIR /app
+COPY package.json .
+RUN apk add --update git
 RUN npm install
+COPY . .
 EXPOSE 3000
 CMD ["node", "app.js"]
 
@@ -19,3 +21,13 @@ CMD ["node", "app.js"]
 
 # # Run the Nginx server
 # CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+
+
+# FROM node:10-alpine
+# WORKDIR /app
+# COPY package.json .
+# RUN apk add --update git
+# RUN npm install
+# COPY . .
+# EXPOSE 8080
+# CMD ["node", "node_server.js" ]
