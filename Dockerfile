@@ -1,7 +1,7 @@
 FROM node
 WORKDIR /app
 COPY package.json .
-RUN apk add --update git
+RUN apt add get update
 # RUN npm install
 COPY . .
 EXPOSE 3000
