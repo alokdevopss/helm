@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json .
 RUN apt-get update
 RUN npm install
-RUN npm run build
+RUN npm run 
 COPY . .
 EXPOSE 3000
 CMD ["node", "app.js"]
